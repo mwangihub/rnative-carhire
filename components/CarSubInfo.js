@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {View, Image, Text} from "react-native";
 
-import {SIZES, FONTS, COLORS, SHADOWS,TEXT_STYLE, assets} from "../constants";
+import {SIZES, FONTS, COLORS, SHADOWS, TEXT_STYLE, assets} from "../constants";
 import Ionicons from "react-native-vector-icons/Ionicons";
-/*
-* Provides Title and Price
-* */
+
+/**
+ * @summary Title and Price
+ * */
 export const CarCardTittle = ({title, subTitle, titleSize, subTitleSize}) => {
     const [showText, setShowText] = useState(true);
     useEffect(() => {
@@ -21,10 +22,10 @@ export const CarCardTittle = ({title, subTitle, titleSize, subTitleSize}) => {
             flexDirection: 'row'
         }}>
             <View style={{flexDirection: 'row'}}>
-                <Text style={{...TEXT_STYLE.largeNormal, color:'#1dace8'}}>
+                <Text style={{...TEXT_STYLE.largeNormal}}>
                     {title}
                 </Text>
-                <View style={{display: showText ? "flex" : 'none', flexDirection:"column", justifyContent:"center", marginLeft:1}}>
+                <View style={{display: showText ? "flex" : 'none', flexDirection: "column", justifyContent: "center", marginLeft: 1}}>
                     <Ionicons name={"ios-radio-button-on"} color={COLORS.BSSuccess}/>
                 </View>
             </View>
@@ -58,9 +59,9 @@ export const EthPrice = ({price}) => {
     );
 };
 
-/*
-* @summary provides Car basic information
-**/
+/**
+ * @summary provides Car basic information
+ **/
 export const CarDetails = () => {
     return (
         <View style={{flexDirection: "row", justifyContent: "space-between"}}>
@@ -97,9 +98,9 @@ export const CarDetails = () => {
         </View>
     );
 };
-/*
-* @summary provides information of the car owner
-* */
+/**
+ * @summary provides information of the car owner
+ * */
 export const CarOwnerDetails = () => {
     return (
         <View style={{

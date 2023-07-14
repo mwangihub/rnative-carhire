@@ -7,7 +7,7 @@ const CarImageGallery = (props) => {
     const data =
         [
             {img: assets.nft04, id: 1},
-            {img: assets.nft02, id: 2},
+            {img: assets.nft06, id: 2},
             {img: assets.nft03, id: 3},
             {img: assets.nft05, id: 4}
         ]
@@ -17,7 +17,7 @@ const CarImageGallery = (props) => {
             {
                 data.map((item, index) => {
                     return (
-                        <View style={{...CARDS.cardRounded, height: 200, width:"98%"}} key={index}>
+                        <View style={{...CARDS.cardRounded, height: 300, }} key={index}>
                             <Image
                                 source={item.img}
                                 resizeMode="cover"

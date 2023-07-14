@@ -21,14 +21,12 @@ const DetailsHeader = ({data, navigation}) => (
             resizeMode="cover"
             style={{width: "100%", height: "100%"}}
         />
-
         <CircleButton
             imgUrl={assets.left}
             handlePress={() => navigation.goBack()}
             left={15}
             top={StatusBar.currentHeight + 10}
         />
-
     </View>
 );
 
@@ -36,11 +34,13 @@ const CarDetails = ({route, navigation}) => {
     const {data} = route.params;
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+       <React.Fragment>
+           {
+               data &&  <SafeAreaView style={{flex: 1}}>
             <FocusedStatusBar
                 barStyle="dark-content"
                 backgroundColor="rgba(255,255,255,0.2)"
-                translucent={true}
+                // translucent={true}
             />
 
             <View style={{
@@ -53,21 +53,21 @@ const CarDetails = ({route, navigation}) => {
                 backgroundColor: "rgba(255,255,255,0.5)",
                 zIndex: 1,
             }}>
-                <RectButton minWidth={170} fontSize={SIZES.large} {...SHADOWS.dark} />
+                <RectButton width={170} fontSize={SIZES.large} {...SHADOWS.dark} text={'Hire this car'} />
             </View>
             <View style={{flex: 1, justifyContent: "center",}}>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View style={{flexDirection:"column"}}>
+                    <View style={{flexDirection: "column"}}>
                         <DetailsHeader data={data} navigation={navigation}/>
                         <CarSubInfo/>
-                        <View style={{padding: SIZES.font,}}>
+                        <View style={{paddingHorizontal: SIZES.font,}}>
                             <CarDetailsDesc data={data}/>
                         </View>
 
                         <View>
                             {
-                                DataT.map((data, index) => {
-                                    return (
+                                DataT.map((data, index) =>
+                                    (
                                         <View style={{
                                             flexDirection: 'column',
                                             marginBottom: SIZES.font,
@@ -78,47 +78,60 @@ const CarDetails = ({route, navigation}) => {
                                                 useData={true}
                                                 data={data}
                                                 title={'Car extra accessories'}
-                                                styles={TEXT_STYLE.smallNormal}
+                                                styles={TEXT_STYLE.mediumMuted}
                                             >
-                                                <Text>Build and Deploy Your First Modern React Native App | NFT
-                                                    Marketplace
-                                                    Course -
-                                                    Extremely
-                                                    Easy</Text>
+                                                <Text>Build and Deploy Your First Modern React Native App | NFT Marketplace Course - Extremely Easy</Text>
                                             </Accordion>
                                         </View>
-                                    )
-                                })
+                                    ))
                             }
                         </View>
 
                         <View style={{flexDirection: "row", flexWrap: 'wrap',}}>
-                            <View style={CARDS.cardRoundedHalf}>
-                                <Ionicons name={'md-car-sport-outline'} size={35} color={COLORS.mute}/>
-                                <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Condition</Text>
-                                <Text style={TEXT_STYLE.normalLightMute}>Car in good conditions</Text>
+                            <View style={CARDS.container}>
+                                <View style={{...CARDS.cardRounded, height: 130}}>
+                                     <View style={{backgroundColor:COLORS.accentDim, width:46, padding:SIZES.base, borderRadius:100}}>
+                                        <Ionicons name={'md-car-sport-outline'} size={30} color={COLORS.accent}/>
+                                    </View>
+                                    <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Condition</Text>
+                                    <Text style={TEXT_STYLE.normalLightMute}>Car in good conditions</Text>
+                                </View>
                             </View>
-                            <View style={CARDS.cardRoundedHalf}>
-                                <Ionicons name={'ios-flash-outline'} size={35} color={COLORS.gray}/>
-                                <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Fuel</Text>
-                                <Text style={TEXT_STYLE.normalLightMute}>Petrol: Best consumption in moderate
-                                    speed</Text>
+                            <View style={CARDS.container}>
+                                <View style={{...CARDS.cardRounded, height: 130}}>
+                                    <View style={{backgroundColor:COLORS.accentDim, width:46, padding:SIZES.base, borderRadius:100}}>
+                                        <Ionicons name={'ios-flash-outline'} size={30} color={COLORS.accent}/>
+                                    </View>
+                                    <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Fuel</Text>
+                                    <Text style={TEXT_STYLE.normalLightMute}>
+                                        Petrol: Best consumption in moderate speed
+                                    </Text>
+                                </View>
                             </View>
 
-                            <View style={CARDS.cardRoundedHalf}>
-                                <Ionicons name={'md-cog-outline'} size={35} color={COLORS.gray}/>
-                                <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Service</Text>
-                                <Text style={TEXT_STYLE.normalLightMute}>Well serviced and ready</Text>
+                            <View style={CARDS.container}>
+                                <View style={{...CARDS.cardRounded, height: 130}}>
+                                    <View style={{backgroundColor:COLORS.accentDim, width:46, padding:SIZES.base, borderRadius:100}}>
+                                        <Ionicons name={'md-cog-outline'} size={30} color={COLORS.accent}/>
+                                    </View>
+                                    <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Service</Text>
+                                    <Text style={TEXT_STYLE.normalLightMute}>Well serviced and ready</Text>
+                                </View>
                             </View>
-                            <View style={CARDS.cardRoundedHalf}>
-                                <Ionicons name={'ios-logo-electron'} size={35} color={COLORS.gray}/>
-                                <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Power</Text>
-                                <Text style={TEXT_STYLE.normalLightMute}>Highly powered and stable on speed.</Text>
+
+                            <View style={CARDS.container}>
+                                <View style={{...CARDS.cardRounded, height: 130}}>
+                                    <View style={{backgroundColor:COLORS.accentDim, width:46, padding:SIZES.base, borderRadius:100}}>
+                                        <Ionicons name={'ios-logo-electron'} size={30} color={COLORS.accent}/>
+                                    </View>
+                                    <Text style={{...TEXT_STYLE.largeNormal, marginTop: SIZES.font}}>Power</Text>
+                                    <Text style={TEXT_STYLE.normalLightMute}>Highly powered and stable on speed.</Text>
+                                </View>
                             </View>
                         </View>
 
                         <View style={{marginBottom: SIZES.extraLarge * 3,}}>
-                            <Text style={{...TEXT_STYLE.largeNormal, paddingHorizontal: SIZES.small,}}>Gallery</Text>
+                            <Text style={{...TEXT_STYLE.largeNormal, padding: SIZES.small,}}>Gallery</Text>
                             <View style={{flexDirection: "row", flexWrap: 'wrap'}}>
                                 <CarImageGallery/>
                             </View>
@@ -131,8 +144,11 @@ const CarDetails = ({route, navigation}) => {
 
 
         </SafeAreaView>
+           }
+       </React.Fragment>
     );
 };
+
 const LoppingFlatList = (data, navigation) => {
     return (
         <FlatList
@@ -164,6 +180,7 @@ const LoppingFlatList = (data, navigation) => {
         />
     )
 };
+
 const DataT = [
     {
         id: "1",
@@ -179,4 +196,5 @@ const DataT = [
         body: "Massage function enabled, safety belt and child lock"
     },
 ]
+
 export default CarDetails;

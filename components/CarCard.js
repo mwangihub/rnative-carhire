@@ -32,7 +32,6 @@ const CarCard = ({data}) => {
                             borderTopRightRadius: SIZES.font,
                         }}/>
                 </TouchableOpacity>
-
                 <CircleButton imgUrl={assets.heart} right={10} top={10}/>
             </View>
             {/* Title and price*/}
